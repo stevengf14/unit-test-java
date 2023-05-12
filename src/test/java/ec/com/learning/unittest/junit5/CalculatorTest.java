@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 public class CalculatorTest {
 
     private Calculator calculator;
+    private Calculator calculatorNull;
 
     @BeforeEach
     public void setUp() {
@@ -29,8 +30,14 @@ public class CalculatorTest {
     @Test
     public void calculatorNotNullTest() {
         //assertNull(calculator);
-        System.out.println("@Test -> calculatorNotNullTest()");
         assertNotNull(calculator, "Calculator must be not null");
+        System.out.println("@Test -> calculatorNotNullTest()");
+    }
+
+    @Test
+    public void calculatorNullTest() {
+        assertNull(calculatorNull);
+        System.out.println("@Test -> calculatorNullTest()");
     }
 
 }
