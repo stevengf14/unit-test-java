@@ -77,6 +77,12 @@ public class CalculatorTest {
 
         assertNotSame(calculator1, calculator2);
 
+        assertEquals("string", "string");
+        // assertEquals("string", "sring", "Test failed");
+
+        assertEquals(1, 1.4, 0.5);
+        assertEquals(1, 0.7, 0.5);
+
         System.out.println("@Test -> assertTypesTest()");
     }
 
