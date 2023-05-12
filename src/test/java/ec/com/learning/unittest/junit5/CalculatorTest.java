@@ -1,6 +1,7 @@
 package ec.com.learning.unittest.junit5;
 
 import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,6 +39,21 @@ public class CalculatorTest {
     public void calculatorNullTest() {
         assertNull(calculatorNull);
         System.out.println("@Test -> calculatorNullTest()");
+    }
+
+    @Test
+    public void addAssertTest() {
+        // 1. SetUp
+        int expectedResult = 30;
+        int currentResult;
+
+        // 2. Action
+        currentResult = calculator.add(10, 20);
+
+        // 3. Assert
+        assertEquals(expectedResult, currentResult);
+        
+        System.out.println("@Test -> addAssertTest()");
     }
 
 }
