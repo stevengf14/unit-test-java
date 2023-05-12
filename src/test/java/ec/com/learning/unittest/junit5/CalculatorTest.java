@@ -1,9 +1,7 @@
 package ec.com.learning.unittest.junit5;
 
 import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,8 +50,34 @@ public class CalculatorTest {
 
         // 3. Assert
         assertEquals(expectedResult, currentResult);
-        
+
         System.out.println("@Test -> addAssertTest()");
+    }
+
+    @Test
+    public void addTest() {
+        assertEquals(30, calculator.add(10, 20));
+        System.out.println("@Test -> addTest()");
+    }
+
+    @Test
+    public void assertTypesTest() {
+        assertTrue(1 == 1);
+        // assertTrue(1 == 2);
+
+        assertNull(calculatorNull);
+        assertNotNull(calculator);
+
+        Calculator calculator1 = new Calculator();
+        Calculator calculator2 = new Calculator();
+        Calculator calculator3 = calculator1;
+
+        assertSame(calculator1, calculator3);
+        //assertSame(calculator1, calculator2);
+
+        assertNotSame(calculator1, calculator2);
+
+        System.out.println("@Test -> assertTypesTest()");
     }
 
 }
