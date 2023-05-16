@@ -109,12 +109,18 @@ public class CalculatorTest {
         assertEquals(2, calculator.divide(10, 5));
         System.out.println("@Test -> divide_ValidInput_ValidResultExpected_Test()");
     }
-    
-    @Test
+
+    /*@Test
     public void divide_InValidInput_Test() {
         fail("Failed detected - No divide by zero");
         calculator.divide(10, 0);
         System.out.println("@Test -> divide_InValidInput_Test()");
+    }*/
+
+    @Test
+    public void divide_InValidInput_ExpectedException_Test() {
+        assertThrows(ArithmeticException.class, () -> calculator.divideByZero(10, 0), "No divide by zero");
+        System.out.println("@Test -> divide_InValidInput_ExpectedException_Test()");
     }
 
 }
