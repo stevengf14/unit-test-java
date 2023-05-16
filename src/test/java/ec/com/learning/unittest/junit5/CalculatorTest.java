@@ -104,4 +104,17 @@ public class CalculatorTest {
         System.out.println("@Test -> substract_ValidInput_ValidNegativeResultExpected_Test()");
     }
 
+    @Test
+    public void divide_ValidInput_ValidResultExpected_Test() {
+        assertEquals(2, calculator.divide(10, 5));
+        System.out.println("@Test -> divide_ValidInput_ValidResultExpected_Test()");
+    }
+    
+    @Test
+    public void divide_InValidInput_Test() {
+        fail("Failed detected - No divide by zero");
+        calculator.divide(10, 0);
+        System.out.println("@Test -> divide_InValidInput_Test()");
+    }
+
 }
