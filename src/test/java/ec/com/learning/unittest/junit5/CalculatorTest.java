@@ -86,4 +86,22 @@ public class CalculatorTest {
         System.out.println("@Test -> assertTypesTest()");
     }
 
+    @Test
+    public void add_ValidInputExpected_Test() {
+        assertEquals(11, calculator.add(7, 4));
+        System.out.println("@Test -> add_ValidInputExpected_Test()");
+    }
+
+    @Test
+    public void substract_ValidInputExpected_Test() {
+        assertEquals(11, calculator.subtract(15, 4));
+        System.out.println("@Test -> substract_ValidInputExpected_Test()");
+    }
+
+    @Test
+    public void substract_ValidInput_ValidNegativeResultExpected_Test() {
+        assertEquals(-11, calculator.subtract(-15, -4));
+        System.out.println("@Test -> substract_ValidInput_ValidNegativeResultExpected_Test()");
+    }
+
 }
