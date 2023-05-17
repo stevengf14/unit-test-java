@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -128,6 +129,13 @@ public class CalculatorTest {
     public void divide_InvalidInput_Test() {
         assertEquals(2, calculator.divide(5, 0));
         System.out.println("@Test -> divide_InvalidInput_Test()");
+    }
+    
+    @Test
+    @DisplayName("Divide Method -> It works!")
+    public void divide_ValidInput_ValidResultExpected_Name_Test() {
+        assertEquals(2, calculator.divide(10, 5));
+        System.out.println("@Test -> divide_ValidInput_ValidResultExpected_Name_Test()");
     }
     
 }
