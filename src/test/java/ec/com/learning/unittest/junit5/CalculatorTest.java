@@ -2,6 +2,7 @@ package ec.com.learning.unittest.junit5;
 
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +17,13 @@ public class CalculatorTest {
 
     private Calculator calculator;
     private Calculator calculatorNull;
+    private static Calculator calculatorStatic;
+
+    @BeforeAll
+    public static void beforeAllTests() {
+        calculatorStatic = new Calculator();
+        System.out.println("@BeforeAll -> beforeAllTests()");
+    }
 
     @BeforeEach
     public void setUp() {
@@ -32,6 +40,7 @@ public class CalculatorTest {
     @Test
     public void calculatorNotNullTest() {
         //assertNull(calculator);
+        assertNotNull(calculatorStatic, "Calculator Static must be not null");
         assertNotNull(calculator, "Calculator must be not null");
         System.out.println("@Test -> calculatorNotNullTest()");
     }
@@ -129,14 +138,14 @@ public class CalculatorTest {
     @Test
     public void divide_InvalidInput_Test() {
         assertEquals(2, calculator.divide(5, 0));
-        System.out.println("@Test -> divide_InvalidInput_Test()");
+        System.out.println("@Test @Disabled -> divide_InvalidInput_Test()");
     }
 
     @Test
     @DisplayName("Divide Method -> It works!")
     public void divide_ValidInput_ValidResultExpected_Name_Test() {
         assertEquals(2, calculator.divide(10, 5));
-        System.out.println("@Test -> divide_ValidInput_ValidResultExpected_Name_Test()");
+        System.out.println("@Test @DisplayName -> divide_ValidInput_ValidResultExpected_Name_Test()");
     }
 
     @Test
@@ -155,19 +164,19 @@ public class CalculatorTest {
         @Test
         public void add_Positive_Test() {
             assertEquals(30, calculator.add(15, 15));
-            System.out.println("@Test -> add_Positive_Test()");
+            System.out.println("@Nested @Test -> add_Positive_Test()");
         }
 
         @Test
         public void add_Negative_Test() {
             assertEquals(-30, calculator.add(-15, -15));
-            System.out.println("@Test -> add_Negative_Test()");
+            System.out.println("@Nested @Test -> add_Negative_Test()");
         }
 
         @Test
         public void add_Zero_Test() {
             assertEquals(0, calculator.add(0, 0));
-            System.out.println("@Test -> add_Zero_Test()");
+            System.out.println("@Nested @Test -> add_Zero_Test()");
         }
 
     }
