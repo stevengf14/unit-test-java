@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -146,6 +147,29 @@ public class CalculatorTest {
                 () -> assertEquals(2, calculator.add(1, 1))
         );
         System.out.println("@Test -> add_Assert_All_Test()");
+    }
+
+    @Nested
+    class AddTest {
+
+        @Test
+        public void add_Positive_Test() {
+            assertEquals(30, calculator.add(15, 15));
+            System.out.println("@Test -> add_Positive_Test()");
+        }
+
+        @Test
+        public void add_Negative_Test() {
+            assertEquals(-30, calculator.add(-15, -15));
+            System.out.println("@Test -> add_Negative_Test()");
+        }
+
+        @Test
+        public void add_Zero_Test() {
+            assertEquals(0, calculator.add(0, 0));
+            System.out.println("@Test -> add_Zero_Test()");
+        }
+
     }
 
 }
