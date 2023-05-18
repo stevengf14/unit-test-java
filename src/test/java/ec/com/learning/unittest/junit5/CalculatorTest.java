@@ -1,5 +1,6 @@
 package ec.com.learning.unittest.junit5;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,6 +24,12 @@ public class CalculatorTest {
     public static void beforeAllTests() {
         calculatorStatic = new Calculator();
         System.out.println("@BeforeAll -> beforeAllTests()");
+    }
+
+    @AfterAll
+    public static void afterAllTests() {
+        calculatorStatic = null;
+        System.out.println("@AfterAll -> afterAllTests()");
     }
 
     @BeforeEach
