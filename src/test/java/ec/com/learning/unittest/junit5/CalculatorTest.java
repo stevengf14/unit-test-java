@@ -1,5 +1,6 @@
 package ec.com.learning.unittest.junit5;
 
+import java.time.Duration;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -207,6 +208,14 @@ public class CalculatorTest {
                 Arguments.of(-10, 2, -8),
                 Arguments.of(6, 0, 6)
         );
+    }
+
+    @Test
+    public void timeOut_Test() {
+        assertTimeout(Duration.ofMillis(1100), () -> {
+            calculator.longTaskOperation();
+        });
+        System.out.println("@Test -> timeOut_Test()");
     }
 
 }

@@ -27,4 +27,12 @@ public class Calculator {
         return number1 / number2;
     }
 
+    public void longTaskOperation() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
