@@ -1,5 +1,6 @@
 package ec.com.learning.unittest.junit5;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,6 +10,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  *
@@ -186,6 +190,23 @@ public class CalculatorTest {
             System.out.println("@Nested @Test -> add_Zero_Test()");
         }
 
+    }
+
+    @ParameterizedTest(name = "{index} => s={0}, b={1}, result={2}")
+    @MethodSource("addProviderData")
+    public void addParametrizedTest(int a, int b, int result) {
+        assertEquals(result, calculator.add(a, b));
+        System.out.println("@ParameterizedTest -> addParametrizedTest()");
+    }
+
+    private static Stream<Arguments> addProviderData() {
+        return Stream.of(
+                Arguments.of(6, 2, 8),
+                Arguments.of(-6, -12, -18),
+                Arguments.of(6, -2, 4),
+                Arguments.of(-10, 2, -8),
+                Arguments.of(6, 0, 6)
+        );
     }
 
 }
