@@ -38,4 +38,16 @@ public class AddTest {
         assertEquals(false, checkNumber);
     }
 
+    @Test
+    public void addMockExceptionTest() {
+        Mockito.when(validNumber.checkZero(0)).thenThrow(new ArithmeticException("We can't accept zero"));
+        Exception exception = null;
+        try {
+            validNumber.checkZero(0);
+        } catch (ArithmeticException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+    }
+
 }
