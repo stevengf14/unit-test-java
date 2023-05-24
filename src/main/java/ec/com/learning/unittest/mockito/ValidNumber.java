@@ -17,4 +17,16 @@ public class ValidNumber {
             return false;
         }
     }
+
+    public boolean checkZero(Object o) {
+        if (o instanceof Integer) {
+            if ((Integer) o == 0) {
+                throw new ArithmeticException("We can't accept zero");
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
