@@ -29,4 +29,13 @@ public class ValidNumber {
             return false;
         }
     }
+
+    public int doubleToInt(Object o) {
+        if (o instanceof Double) {
+            return ((Double) o).intValue();
+        } else {
+            return 0;
+        }
+    }
+    
 }
