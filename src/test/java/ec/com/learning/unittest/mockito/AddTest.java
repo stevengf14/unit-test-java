@@ -50,4 +50,13 @@ public class AddTest {
         assertNotNull(exception);
     }
 
+    @Test
+    public void addRealMethodTest() {
+        Mockito.when(validNumber.checkZero(3)).thenCallRealMethod();
+        assertEquals(true, validNumber.checkZero(3));
+
+        Mockito.when(validNumber.checkZero("3")).thenCallRealMethod();
+        assertEquals(false, validNumber.checkZero("3"));
+    }
+
 }
