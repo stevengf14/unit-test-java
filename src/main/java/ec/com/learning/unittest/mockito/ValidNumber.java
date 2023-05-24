@@ -23,7 +23,7 @@ public class ValidNumber {
             if ((Integer) o == 0) {
                 throw new ArithmeticException("We can't accept zero");
             } else {
-                return false;
+                return true;
             }
         } else {
             return false;
