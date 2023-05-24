@@ -18,5 +18,9 @@ public class Add {
         }
         return 0;
     }
-    
+
+    public int addInt(Object a) {
+        return validNumber.doubleToInt(a) + validNumber.doubleToInt(a);
+    }
+
 }
