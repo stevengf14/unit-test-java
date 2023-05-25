@@ -3,6 +3,7 @@ package ec.com.learning.unittest.mockito;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -84,7 +85,7 @@ public class AddTest {
         // Assert
         assertEquals(9, result);
     }
-    
+
     // Given
     // When
     // Then
@@ -93,6 +94,17 @@ public class AddTest {
         // Given
         given(validNumber.check(4)).willReturn(true);
         given(validNumber.check(5)).willReturn(true);
+        // When
+        int result = add.add(4, 5);
+        // Then
+        assertEquals(9, result);
+    }
+
+    @Test
+    public void argumentMatcherTest() {
+        // Given
+        given(validNumber.check(anyInt())).willReturn(true);
+        given(validNumber.check(anyInt())).willReturn(true);
         // When
         int result = add.add(4, 5);
         // Then
