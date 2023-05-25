@@ -3,6 +3,7 @@ package ec.com.learning.unittest.mockito;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
@@ -68,6 +69,34 @@ public class AddTest {
         };
         when(validNumber.doubleToInt(7.7)).thenAnswer(answer);
         assertEquals(14, add.addInt(7.7));
+    }
+
+    // Arrange
+    // Act 
+    // Assert
+    @Test
+    public void patternTest() {
+        // Arrange
+        when(validNumber.check(4)).thenReturn(true);
+        when(validNumber.check(5)).thenReturn(true);
+        // Act
+        int result = add.add(4, 5);
+        // Assert
+        assertEquals(9, result);
+    }
+    
+    // Given
+    // When
+    // Then
+    @Test
+    public void patternBDDTest() {
+        // Given
+        given(validNumber.check(4)).willReturn(true);
+        given(validNumber.check(5)).willReturn(true);
+        // When
+        int result = add.add(4, 5);
+        // Then
+        assertEquals(9, result);
     }
 
 }
