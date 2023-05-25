@@ -13,6 +13,10 @@ public class Add {
         this.validNumber = validNumber;
         this.print = print;
     }
+    
+    public Add(ValidNumber validNumber) {
+        this.validNumber = validNumber;
+    }
 
     public int add(Object a, Object b) {
         if (validNumber.check(a) && validNumber.check(b)) {
