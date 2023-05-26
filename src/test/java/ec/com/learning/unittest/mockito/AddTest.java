@@ -125,6 +125,13 @@ public class AddTest {
         // Then
         verify(validNumber).check(4);
         // verify(validNumber, Mockito.times(2)).check(4);
+        verify(validNumber, Mockito.never()).check(99);
+        verify(validNumber, Mockito.atLeast(1)).check(4);
+        verify(validNumber, Mockito.atMost(3)).check(4);
+        verify(validNumber, Mockito.atLeastOnce()).check(4);
+
+        verify(print).showMessage(9);
+        verify(print, Mockito.never()).showError();
     }
 
 }
