@@ -7,7 +7,9 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -22,6 +24,8 @@ public class AddTest {
     private Add add;
     @Mock
     private ValidNumber validNumber;
+    @Mock
+    private Print print;
 
     @BeforeEach
     public void setUp() {
@@ -109,6 +113,18 @@ public class AddTest {
         int result = add.add(4, 5);
         // Then
         assertEquals(9, result);
+    }
+
+    @Test
+    public void addPrintTest() {
+        // Given
+        given(validNumber.check(4)).willReturn(true);
+        given(validNumber.check(5)).willReturn(true);
+        // When
+        add.addPrint(4, 5);
+        // Then
+        verify(validNumber).check(4);
+        // verify(validNumber, Mockito.times(2)).check(4);
     }
 
 }
