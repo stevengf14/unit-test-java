@@ -1,5 +1,7 @@
 package ec.com.learning.unittest.mockito;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,6 +15,7 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -149,4 +152,27 @@ public class AddTest {
         assertEquals(captor.getValue().intValue(), 9);
     }
 
+    @Spy
+    List<String> spyList = new ArrayList<>();
+    @Mock
+    List<String> mockList = new ArrayList<>();
+
+    @Test
+    public void spyTest() {
+        spyList.add("1");
+        spyList.add("2");
+        verify(spyList).add("1");
+        verify(spyList).add("2");
+        assertEquals(2, spyList.size());
+    }
+
+    @Test
+    public void mockTest() {
+        mockList.add("1");
+        mockList.add("2");
+        verify(mockList).add("1");
+        verify(mockList).add("2");
+        given(mockList.size()).willReturn(2);
+        assertEquals(2, mockList.size());
+    }
 }
