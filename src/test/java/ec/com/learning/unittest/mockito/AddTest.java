@@ -3,8 +3,10 @@ package ec.com.learning.unittest.mockito;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.ArgumentCaptor;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -26,6 +28,8 @@ public class AddTest {
     private ValidNumber validNumber;
     @Mock
     private Print print;
+    @Captor
+    private ArgumentCaptor<Integer> captor;
 
     @BeforeEach
     public void setUp() {
@@ -132,6 +136,17 @@ public class AddTest {
 
         verify(print).showMessage(9);
         verify(print, Mockito.never()).showError();
+    }
+
+    @Test
+    public void captorTest() {
+        given(validNumber.check(4)).willReturn(true);
+        given(validNumber.check(5)).willReturn(true);
+        // When
+        add.addPrint(4, 5);
+        // Then
+        verify(print).showMessage(captor.capture());
+        assertEquals(captor.getValue().intValue(), 9);
     }
 
 }
