@@ -3,8 +3,10 @@ package ec.com.learning.unittest.mockito;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.mockito.ArgumentCaptor;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.doAnswer;
@@ -25,6 +27,9 @@ public class LoginTest {
 
     @Mock
     private WebService webService;
+
+    @Captor
+    private ArgumentCaptor<Callback> callbackArgumentCaptor;
 
     @BeforeEach
     public void setUp() {
@@ -68,5 +73,19 @@ public class LoginTest {
         login.doLogin();
         verify(webService, times(1)).login(anyString(), anyString(), any(Callback.class));
         assertEquals(login.isLogin, true);
+    }
+
+    @Test
+    public void doLoginCaptorTest() {
+        login.doLogin();
+        verify(webService, times(1)).login(anyString(), anyString(), callbackArgumentCaptor.capture());
+        assertEquals(login.isLogin, false);
+
+        Callback callback = callbackArgumentCaptor.getValue();
+        callback.onSuccess("User is correct");
+        assertEquals(login.isLogin, true);
+
+        callback.onFail("Error");
+        assertEquals(login.isLogin, false);
     }
 }
