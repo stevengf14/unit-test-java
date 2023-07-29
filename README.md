@@ -11,3 +11,5 @@ Upon completion of the course, attendees will be prepared to apply advanced unit
 
 ## Certificate
 https://sofi.udemy.com/certificate/UC-b0d1e50c-5268-4288-8704-b7f677881832/
+
+Finished!
